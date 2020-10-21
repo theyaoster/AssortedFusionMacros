@@ -1,0 +1,114 @@
+{
+	Tools = ordered() {
+		Pentagon_111 = MacroOperator {
+			Inputs = ordered() {
+				Input2 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "ShowViewControls",
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "Level",
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "BorderWidth",
+				},
+				Input5 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "PaintMode",
+				},
+				Input6 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "Invert",
+				},
+				Input7 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "Center",
+				},
+				Input8 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "Size",
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "XRotation",
+					Default = 0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "YRotation",
+					Default = 0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "ZRotation",
+					Default = 0,
+				},
+				Input1 = InstanceInput {
+					SourceOp = "pentagon",
+					Source = "EffectMask",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "pentagon",
+					Source = "Mask",
+				},
+				Output1 = InstanceOutput {
+					SourceOp = "pentagonPolyline",
+					Source = "Value",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				pentagon = PolylineMask {
+					DrawMode = "ModifyOnly",
+					DrawMode2 = "InsertAndModify",
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "Maximum" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Polyline = Input {
+							SourceOp = "pentagonPolyline",
+							Source = "Value",
+						},
+						Polyline2 = Input {
+							Value = Polyline {
+							},
+							Disabled = true,
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, -66 } },
+				},
+				pentagonPolyline = BezierSpline {
+					SplineColor = { Red = 173, Green = 255, Blue = 47 },
+					CtrlWShown = false,
+					NameSet = true,
+					KeyFrames = {
+						[0] = { 0, Flags = { Linear = true, LockedY = true }, Value = Polyline {
+								Closed = true,
+								Points = {
+									{ Linear = true, X = 0.293741541584646, Y = 0, LX = -0.0676568098894254, LY = 0.165549514939605, RX = -0.0676568098894254, RY = -0.165549522170731 },
+									{ X = 0.0907711119163693, Y = -0.496648566512194, LX = 0.0676568023801789, LY = 0.165549517720807, RX = -0.109471008220683, RY = 0.0632342908430391 },
+									{ X = -0.237641912745679, Y = -0.306945693983076, LX = 0.109471013226847, LY = -0.0632342841681532, RX = 0, RY = 0.20463045820546 },
+									{ X = -0.237641912745679, Y = 0.306945680633305, LX = 0, LY = -0.204630453755536, RX = 0.109471008220683, RY = 0.0632342880618367 },
+									{ X = 0.0907711119163693, Y = 0.496648544818815, LX = -0.109471013226847, LY = -0.0632342908430392, RX = 0.0676568098894255, RY = -0.165549514939605 }
+								}
+							} }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "Pentagon1"
+}

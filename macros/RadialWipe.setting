@@ -1,0 +1,138 @@
+{
+	Tools = ordered() {
+		RadialWipe1 = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "circle",
+					Source = "Transform3DOp.Translate.X",
+					Name = "X",
+					Default = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "circle",
+					Source = "Transform3DOp.Translate.Y",
+					Name = "Y",
+					Default = 0,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "circle",
+					Source = "Transform3DOp.Scale.X",
+					Name = "Scale",
+					Default = 0.5,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "circle",
+					Source = "SurfaceTorusInputs.StartSweep",
+					Name = "Start",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "circle",
+					Source = "SurfaceTorusInputs.EndSweep",
+					Name = "End",
+					ControlGroup = 4,
+					Default = 360,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "circle",
+					Source = "MtlStdInputs.Diffuse.Color.Red",
+					Name = "Color",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "circle",
+					Source = "MtlStdInputs.Diffuse.Color.Green",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "circle",
+					Source = "MtlStdInputs.Diffuse.Color.Blue",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "circle",
+					Source = "MtlStdInputs.Diffuse.Color.Alpha",
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "circle",
+					Source = "MtlStdInputs.Diffuse.Opacity",
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "renderer",
+					Source = "Width",
+					Default = 1920,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "renderer",
+					Source = "Height",
+					Default = 1080,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "renderer",
+					Source = "UseFrameFormatSettings",
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "renderer",
+					Source = "EffectMask",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "renderer",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				circle = Shape3D {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						["SurfacePlaneInputs.ObjectID.ObjectID"] = Input { Value = 1, },
+						["Transform3DOp.Rotate.X"] = Input { Value = 90, },
+						["Transform3DOp.Rotate.Z"] = Input { Value = 90, },
+						["Transform3DOp.Scale.X"] = Input { Value = 0.5, },
+						Shape = Input { Value = FuID { "SurfaceTorusInputs" }, },
+						["MtlStdInputs.MaterialID"] = Input { Value = 2, },
+						["SurfaceTorusInputs.Radius"] = Input { Value = 0.5, },
+						["SurfaceTorusInputs.SubdivisionLevelBase"] = Input { Value = 100, },
+						["SurfaceTorusInputs.SubdivisionLevelHeight"] = Input { Value = 100, },
+						["SurfaceTorusInputs.Visibility.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.Lighting.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.Matte.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.BlendMode.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.Controls.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.ObjectID.Nest"] = Input { Value = 1, },
+						["SurfaceTorusInputs.ObjectID.ObjectID"] = Input { Value = 2, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 181.5 } },
+				},
+				renderer = Renderer3D {
+					CtrlWShown = false,
+					NameSet = true,
+					CustomData = { ToolVersion = 2 },
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						SceneInput = Input {
+							SourceOp = "circle",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 214.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "RadialWipe1"
+}

@@ -1,0 +1,383 @@
+{
+	Tools = ordered() {
+		SweepMask1 = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopLeftGreen",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopLeftBlue",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopLeftAlpha",
+					ControlGroup = 1,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopRightRed",
+					Name = "Top Right",
+					ControlGroup = 2,
+					Default = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopRightGreen",
+					ControlGroup = 2,
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopRightBlue",
+					ControlGroup = 2,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "TopRightAlpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomLeftRed",
+					Name = "Bottom Left",
+					ControlGroup = 3,
+					Default = 0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomLeftGreen",
+					ControlGroup = 3,
+					Default = 0,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomLeftBlue",
+					ControlGroup = 3,
+					Default = 0,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomLeftAlpha",
+					ControlGroup = 3,
+					Default = 1,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomRightRed",
+					Name = "Bottom Right",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomRightGreen",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomRightBlue",
+					ControlGroup = 4,
+					Default = 0,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "sweep_color",
+					Source = "BottomRightAlpha",
+					ControlGroup = 4,
+					Default = 1,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "custom",
+					Source = "NumberIn1",
+					Name = "Reciprocal Aspect Ratio",
+					Default = 0.5625,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "custom",
+					Source = "NumberIn7",
+					Name = "Sweep Line Length",
+					Default = 1,
+				},
+				Input19 = InstanceInput {
+					SourceOp = "custom",
+					Source = "NumberIn8",
+					Name = "Sweep Line Position",
+					Default = 0,
+				},
+				Input20 = InstanceInput {
+					SourceOp = "sweep",
+					Source = "Level",
+					Name = "Sweep Line Level",
+					Default = 1,
+				},
+				Input21 = InstanceInput {
+					SourceOp = "sweep",
+					Source = "BorderWidth",
+					Name = "Sweep Line Width",
+					Default = 0.005,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "OutputMask",
+					Source = "MainInput1",
+				},
+				Input22 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "Level",
+					Default = 1,
+				},
+				Input23 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "SoftEdge",
+				},
+				Input24 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "Center",
+				},
+				Input25 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "Width",
+					Default = 0.5,
+				},
+				Input26 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "Height",
+					Default = 0.5,
+				},
+				Input27 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "CornerRadius",
+					Default = 0,
+				},
+				Input28 = InstanceInput {
+					SourceOp = "content_mask",
+					Source = "Angle",
+					Default = 0,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "merge",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				sweep_color = Background {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "sweep",
+							Source = "Mask",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 49.5 } },
+				},
+				custom = Custom {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						NumberIn1 = Input { Value = 0.5625, },
+						NumberIn2 = Input { Expression = "2 * content_mask.Width + 2 * NumberIn1 * content_mask.Height", },
+						NumberIn3 = Input { Expression = "(custom.NumberIn1 * content_mask.Height / 2) / custom.NumberIn2", },
+						NumberIn4 = Input { Expression = "(content_mask.Width + custom.NumberIn1 * content_mask.Height / 2) / custom.NumberIn2", },
+						NumberIn5 = Input { Expression = " (content_mask.Width + 3 * custom.NumberIn1 * content_mask.Height / 2) / custom.NumberIn2", },
+						NumberIn6 = Input { Expression = "(2 * content_mask.Width + 3 * custom.NumberIn1 * content_mask.Height / 2) / custom.NumberIn2", },
+						NumberIn7 = Input { Value = 1, },
+						LUTIn1 = Input {
+							SourceOp = "customLUTIn1",
+							Source = "Value",
+						},
+						LUTIn2 = Input {
+							SourceOp = "customLUTIn2",
+							Source = "Value",
+						},
+						LUTIn3 = Input {
+							SourceOp = "customLUTIn3",
+							Source = "Value",
+						},
+						LUTIn4 = Input {
+							SourceOp = "customLUTIn4",
+							Source = "Value",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -220, 49.5 } },
+				},
+				customLUTIn1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+				},
+				customLUTIn2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+				},
+				customLUTIn3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+				},
+				customLUTIn4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+				},
+				sweep = RectangleMask {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						BorderWidth = Input { Value = 0.005, },
+						Solid = Input { Value = 0, },
+						WritePosition = Input {
+							Value = 0.0910381184103812,
+							Expression = "iif(custom.NumberIn8<custom.NumberIn4,custom.NumberIn3,iif(custom.NumberIn8<custom.NumberIn5,custom.NumberIn4,iif(custom.NumberIn8<custom.NumberIn6,custom.NumberIn5,custom.NumberIn6)))",
+						},
+						WriteLength = Input {
+							Value = 0.317923763179238,
+							Expression = "iif(custom.NumberIn8<custom.NumberIn4,content_mask.Width/custom.NumberIn2,iif(custom.NumberIn8<custom.NumberIn5,custom.NumberIn1*content_mask.Height/custom.NumberIn2,iif(custom.NumberIn8<custom.NumberIn6,content_mask.Width/custom.NumberIn2,custom.NumberIn1*content_mask.Height/custom.NumberIn2)))*custom.NumberIn7",
+						},
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Expression = "content_mask.Center", },
+						Width = Input {
+							Value = 0.441,
+							Expression = "content_mask.Width",
+						},
+						Height = Input {
+							Value = 0.449,
+							Expression = "content_mask.Height",
+						},
+						CornerRadius = Input { Expression = "content_mask.CornerRadius", },
+						Angle = Input { Expression = "content_mask.Angle", },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 49.5 } },
+				},
+				OutputMask = MacroOperator {
+					CtrlWShown = false,
+					Inputs = ordered() {
+						MainInput1 = InstanceInput {
+							SourceOp = "Merge1_1",
+							Source = "Foreground",
+							Name = "Input",
+						},
+						Input1 = InstanceInput {
+							SourceOp = "Merge1_1",
+							Source = "EffectMask",
+							Name = "Mask",
+						}
+					},
+					Outputs = {
+						MainOutput1 = InstanceOutput {
+							SourceOp = "Merge1_1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { 0, 82.5 } },
+					Tools = ordered() {
+						Merge1_1 = Merge {
+							CtrlWShown = false,
+							Inputs = {
+								EffectMask = Input {
+									SourceOp = "content_mask",
+									Source = "Mask",
+								},
+								Background = Input {
+									SourceOp = "Background1_1",
+									Source = "Output",
+								},
+								PerformDepthMerge = Input { Value = 0, },
+							},
+							ViewInfo = OperatorInfo { Pos = { 0, 41.2576 } },
+						},
+						Background1_1 = Background {
+							CtrlWZoom = false,
+							CtrlWShown = false,
+							Inputs = {
+								Width = Input { Value = 1920, },
+								Height = Input { Value = 1080, },
+								UseFrameFormatSettings = Input { Value = 1, },
+								["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+								TopLeftAlpha = Input { Value = 0, },
+							},
+							ViewInfo = OperatorInfo { Pos = { 0, 8.25758 } },
+						}
+					},
+				},
+				merge = Merge {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "sweep_color",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 82.5 } },
+				},
+				content_mask = RectangleMask {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						PaintMode = Input { Value = FuID { "Multiply" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -110, 82.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "SweepMask1"
+}
